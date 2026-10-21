@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>作品集 · Portfolio</title>
+<meta name="description" content="视觉传达设计出身，正在往前线部署工程走。" />
+<style>
+  /* ============ 需要替换的内容都在 HTML 里，搜索「替换」两个字就能找到 ============ */
+  :root{
+    --bg:#0A0A0B;
+    --bg-soft:#111113;
+    --line:rgba(255,255,255,.10);
+    --line-strong:rgba(255,255,255,.20);
+    --fg:#F2F1EE;
+    --fg-dim:#9A9A96;
+    --fg-faint:#5E5E5C;
+    --accent:#CBFF4D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#0A0A0B}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- 导航 ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(10,10,11,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-size:14px;letter-spacing:.02em}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  .nav-links{display:flex;gap:26px;font-size:13px;color:var(--fg-dim)}
+  .nav-links a{transition:color .2s}
+  .nav-links a:hover{color:var(--fg)}
+  @media (max-width:640px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:120px 0 96px;border-bottom:1px solid var(--line);position:relative}
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(680px 380px at 78% 8%,rgba(203,255,77,.07),transparent 70%);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--fg-faint);
+    border:1px solid var(--line);border-radius:99px;
+    padding:6px 12px;margin-bottom:34px;
+  }
+  .eyebrow b{color:var(--accent);font-weight:500}
+  h1{
+    font-size:clamp(42px,8vw,92px);
+    line-height:1.02;letter-spacing:-.045em;font-weight:700;
+    max-width:15ch;
+  }
+  h1 em{font-style:normal;color:var(--fg-faint)}
+  .lede{
+    margin-top:30px;max-width:56ch;
+    font-size:clamp(15px,1.6vw,18px);color:var(--fg-dim);
+  }
+  .lede strong{color:var(--fg);font-weight:500}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:12px 20px;border-radius:8px;
+    font-size:13.5px;border:1px solid var(--line-strong);
+    transition:all .2s;
+  }
+  .btn:hover{border-color:var(--fg);transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#0A0A0B;border-color:var(--accent);font-weight:600}
+  .btn-primary:hover{background:#DCFF7E;border-color:#DCFF7E}
+
+  /* ---------- 通用 section ---------- */
+  section{padding:88px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-title{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-faint)}
+  .sec-note{font-size:13px;color:var(--fg-faint)}
+
+  /* ---------- 项目 ---------- */
+  .projects{display:grid;gap:0}
+  .case{
+    display:grid;grid-template-columns:56px 1fr auto;gap:28px;align-items:start;
+    padding:34px 0;border-top:1px solid var(--line);
+    transition:background .25s;
+    position:relative;
+  }
+  .case:first-child{border-top:none}
+  .case:hover{background:linear-gradient(90deg,rgba(255,255,255,.03),transparent 65%)}
+  .case-no{font-size:12px;color:var(--fg-faint);font-variant-numeric:tabular-nums;padding-top:6px}
+  .case h3{font-size:clamp(20px,2.6vw,27px);letter-spacing:-.02em;font-weight:600;margin-bottom:10px}
+  .case p{color:var(--fg-dim);font-size:14.5px;max-width:58ch}
+  .case-meta{
+    text-align:right;font-size:12.5px;color:var(--fg-faint);
+    display:flex;flex-direction:column;gap:4px;white-space:nowrap;padding-top:6px;
+  }
+  .case-meta span:first-child{color:var(--fg-dim)}
+  @media (max-width:760px){
+    .case{grid-template-columns:36px 1fr;gap:14px}
+    .case-meta{grid-column:2;text-align:left;flex-direction:row;gap:12px;padding-top:12px}
+  }
+  .tag{
+    display:inline-block;margin-top:16px;
+    font-size:11.5px;color:var(--fg-dim);
+    border:1px solid var(--line);border-radius:99px;padding:3px 10px;margin-right:6px;
+  }
+
+  /* ---------- 能力 ---------- */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+  .skill{background:var(--bg);padding:28px 24px}
+  .skill h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-faint);margin-bottom:18px}
+  .skill ul{list-style:none;display:flex;flex-direction:column;gap:9px;font-size:14px;color:var(--fg-dim)}
+  .skill li{display:flex;gap:8px;align-items:baseline}
+  .skill li::before{content:"—";color:var(--fg-faint)}
+  @media (max-width:760px){.skills{grid-template-columns:1fr}}
+
+  /* ---------- 联系 ---------- */
+  .contact{padding:96px 0 110px;text-align:left}
+  .contact h2{font-size:clamp(30px,5.4vw,58px);letter-spacing:-.04em;line-height:1.06;max-width:20ch}
+  .contact h2 span{color:var(--fg-faint)}
+  .contact-list{display:flex;flex-direction:column;gap:2px;margin-top:44px;max-width:520px}
+  .contact-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 0;border-top:1px solid var(--line);font-size:14px;
+    transition:padding-left .2s,color .2s;
+  }
+  .contact-row:hover{padding-left:8px;color:var(--accent)}
+  .contact-row span:first-child{color:var(--fg-faint);font-size:12.5px;letter-spacing:.08em}
+
+  footer{padding:34px 0;border-top:1px solid var(--line);color:var(--fg-faint);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* ---------- 入场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot"></span><span>【替换：你的名字】</span></div>
+    <nav class="nav-links">
+      <a href="#work">项目</a>
+      <a href="#skills">能力</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="eyebrow reveal"><b>●</b> 开放机会 · 2026 届</div>
+      <h1 class="reveal">视觉传达出身，<br><em>往前线部署走。</em></h1>
+      <p class="lede reveal">
+        我能做版式、色彩和品牌视觉，也正在把它变成<strong>能上线、能被使用的产品</strong>。
+        不是又一份漂亮 PPT——是能点开、能跑、能交付的东西。
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#work">看项目</a>
+        <a class="btn" href="#contact">联系我 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 项目 ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title">Selected Work</div>
+        <div class="sec-note">【替换：这里写一句总述，比如「三个从设计走到上线的项目」】</div>
+      </div>
+
+      <div class="projects">
+        <!-- 案例 1 -->
+        <article class="case reveal">
+          <div class="case-no">01</div>
+          <div>
+            <h3>【替换：项目名】</h3>
+            <p>【替换：两句话讲清背景、你做了什么、结果如何。有数字就写数字，比如「官网转化率从 1.2% 提到 3.1%」。】</p>
+            <div>
+              <span class="tag">品牌视觉</span><span class="tag">主导设计</span>
+            </div>
+          </div>
+          <div class="case-meta">
+            <span>【角色】</span>
+            <span>【年份】</span>
+          </div>
+        </article>
+
+        <!-- 案例 2 -->
+        <article class="case reveal">
+          <div class="case-no">02</div>
+          <div>
+            <h3>【替换：项目名】</h3>
+            <p>【替换：如果这是你自己做的小工具，重点写「为什么做 / 遇到什么问题 / 怎么解决」，这比界面截图值钱。】</p>
+            <div>
+              <span class="tag">设计 + 实现</span><span class="tag">上线</span>
+            </div>
+          </div>
+          <div class="case-meta">
+            <span>【角色】</span>
+            <span>【年份】</span>
+          </div>
+        </article>
+
+        <!-- 案例 3 -->
+        <article class="case reveal">
+          <div class="case-no">03</div>
+          <div>
+            <h3>【替换：项目名】</h3>
+            <p>【替换：实习期间的作品也可以放，写清楚你负责哪一块、跟谁协作、交付了什么。】</p>
+            <div>
+              <span class="tag">视觉设计</span><span class="tag">实习</span>
+            </div>
+          </div>
+          <div class="case-meta">
+            <span>【角色】</span>
+            <span>【年份】</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 能力 ================= -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-title">Capabilities</div>
+        <div class="sec-note">诚实清单 —— 会就是会，在学就在学</div>
+      </div>
+      <div class="skills reveal">
+        <div class="skill">
+          <h4>设计</h4>
+          <ul>
+            <li>版式与字体排印</li>
+            <li>色彩系统与品牌视觉</li>
+            <li>信息架构</li>
+            <li>【替换：其他】</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h4>工具</h4>
+          <ul>
+            <li>Figma · Illustrator · Photoshop</li>
+            <li>AI 辅助工作流</li>
+            <li>【替换：其他】</li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h4>工程（进行中）</h4>
+          <ul>
+            <li>HTML / CSS 能手写</li>
+            <li>Python · SQL 基础</li>
+            <li>Git · Vercel 部署</li>
+            <li>正在学【替换：下一步想学的】</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 联系 ================= -->
+  <section id="contact" class="contact" style="border-bottom:none">
+    <div class="wrap">
+      <h2 class="reveal">如果你需要一个<br><span>既懂设计、又肯动手</span>的人。</h2>
+      <div class="contact-list reveal">
+        <a class="contact-row" href="mailto:【替换：邮箱】">
+          <span>EMAIL</span><span>【替换：邮箱】</span>
+        </a>
+        <a class="contact-row" href="【替换：GitHub 地址】">
+          <span>GITHUB</span><span>【替换：github.com/xxx】</span>
+        </a>
+        <a class="contact-row" href="【替换：简历 PDF 路径】">
+          <span>RESUME</span><span>下载简历 PDF</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;width:100%">
+    <span>© 2026 【替换：你的名字】</span>
+    <span>onen0.me</span>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
